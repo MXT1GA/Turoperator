@@ -1,5 +1,6 @@
+from back.db import db_api as db
 
-from db import db_api as db
+
 def create_tour(title, cost, date, available, howManyPeople):
     return db.create_tour(title, cost, date, available, howManyPeople)
 def amountPeoples(id):

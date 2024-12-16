@@ -1,4 +1,5 @@
-from db import db_api as db
+from back.db import db_api as db
+
 
 def getSelledTours(): #Проданные туры
     db.getSelledTours()
