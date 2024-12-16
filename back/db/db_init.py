@@ -45,7 +45,7 @@ cost INTEGER NOT NULL,
 profits INTEGER NOT NULL,
 Revenue INTEGER NOT NULL,
 month TEXT NOT NULL,
-tax INTEGER NOT NULL
+tax INTEGER NOT NULL,
 FOREIGN KEY (tour) REFERENCES OperatorsTransports (Tours)
 )
 ''')
