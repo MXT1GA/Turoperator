@@ -109,11 +109,61 @@ def costTour(id):
 #==============================ФИНАНСЫ==============================
 
 def getSelledTours(): #Проданные туры
-    pass
-def getTour(): #Данные проданного тура
-    pass
-def getMounthFinance(): #Отчет за месяц
-    pass
-def getFinanceTour(): #подробный Финансовый отчет тура
-    pass
+    try:
+        connection = sqlite3.connect('db_turooperator.db')
+        cursor = connection.cursor()
+        cursor.execute('''
+        SELECT * FROM SelledTours
+                ''')
+        results = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return results
+    except Exception as e:
+        print(e)
+        return False
 
+def getTour(id): #Данные проданного тура
+    try:
+        connection = sqlite3.connect('db_turooperator.db')
+        cursor = connection.cursor()
+        cursor.execute('''
+        SELECT * FROM Tours WHERE id = ?
+                        ''', (id))
+        results = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return results
+    except Exception as e:
+        print(e)
+        return False
+
+def getMounthFinance(month): #Отчет за месяц
+    try:
+        connection = sqlite3.connect('db_turooperator.db')
+        cursor = connection.cursor()
+        cursor.execute('''
+        SELECT * FROM SelledTours WHERE month = ?
+                        ''', (month))
+        results = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return results
+    except Exception as e:
+        print(e)
+        return False
+
+def getFinanceTour(id): #подробный Финансовый отчет тура
+    try:
+        connection = sqlite3.connect('db_turooperator.db')
+        cursor = connection.cursor()
+        cursor.execute('''
+        SELECT * FROM SelledTours WHERE id = ?
+                        ''', (id))
+        results = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return results
+    except Exception as e:
+        print(e)
+        return False
