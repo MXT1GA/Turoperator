@@ -116,7 +116,7 @@ def checkAuth(lg, password):
         connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
-        SELECT * FROM Clients WHERE login = ? AND password = ?
+        SELECT * FROM Users WHERE login = ? AND password = ?
         ''', (lg, password))
         results = cursor.fetchall()
         connection.commit()
@@ -125,6 +125,8 @@ def checkAuth(lg, password):
     except Exception as e:
         print(e)
         return False
+
+
 #==============================ФИНАНСЫ==============================
 
 def getSelledTours(): #Проданные туры
