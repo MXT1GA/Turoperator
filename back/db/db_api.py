@@ -126,7 +126,34 @@ def checkAuth(lg, password):
         print(e)
         return False
 
+def createUsers(lg, password, lastname, name, patronymic):
+    try:
+        connection = sqlite3.connect(db_turooperator)
+        cursor = connection.cursor()
+        cursor.execute('''
+        INSERT INTO Users (lg, password, lastname, name, patronymic)
+        VALUES (?, ?, ?, ?, ?)
+        ''', (lg, password, lastname, name, patronymic))
+        connection.commit()
+        connection.close()
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
+def delUsers(id):
+    try:
+        connection = sqlite3.connect(db_turooperator)
+        cursor = connection.cursor()
+        cursor.execute('''
+        DELETE FROM Users WHERE id = ?
+        ''', (id))
+        connection.commit()
+        connection.close()
+        return True
+    except Exception as e:
+        print(e)
+        return False
 #==============================ФИНАНСЫ==============================
 
 def getSelledTours(): #Проданные туры
