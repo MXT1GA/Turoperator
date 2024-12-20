@@ -53,6 +53,8 @@ FOREIGN KEY (tour) REFERENCES OperatorsTransports (Tours)
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Clients (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
+login TEXT NOT NULL,
+password TEXT NOT NULL,
 lastname INTEGER NOT NULL,
 name TEXT NOT NULL,
 patronymic TEXT NOT NULL

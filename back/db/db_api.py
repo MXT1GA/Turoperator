@@ -106,6 +106,22 @@ def costTour(id):
         print(e)
         return False
 
+#==============================АВТОРИЗАЦИЯ==============================
+
+def checkAuth(lg, password):
+    try:
+        connection = sqlite3.connect('db_turooperator.db')
+        cursor = connection.cursor()
+        cursor.execute('''
+        SELECT * FROM Clients WHERE login = ? AND password = ?
+        ''', (lg, password))
+        results = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        if len(results) > 0: return True
+    except Exception as e:
+        print(e)
+        return False
 #==============================ФИНАНСЫ==============================
 
 def getSelledTours(): #Проданные туры
