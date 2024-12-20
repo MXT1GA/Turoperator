@@ -50,6 +50,15 @@ FOREIGN KEY (tour) REFERENCES OperatorsTransports (Tours)
 )
 ''')
 
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Clients (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+lastname INTEGER NOT NULL,
+name TEXT NOT NULL,
+patronymic TEXT NOT NULL
+)
+''')
+
 # Сохраняем изменения и закрываем соединение
 connection.commit()
 connection.close()
