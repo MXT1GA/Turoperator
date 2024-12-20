@@ -131,7 +131,7 @@ def createUsers(lg, password, lastname, name, patronymic):
         connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
-        INSERT INTO Users (lg, password, lastname, name, patronymic)
+        INSERT INTO Users (login, password, lastname, name, patronymic)
         VALUES (?, ?, ?, ?, ?)
         ''', (lg, password, lastname, name, patronymic))
         connection.commit()
