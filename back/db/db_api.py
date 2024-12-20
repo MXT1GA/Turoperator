@@ -1,5 +1,5 @@
 import sqlite3
-
+import os
 current_dir = os.path.dirname(os.path.abspath(__file__))  # Получаем абсолютный путь текущего файла
 db_turooperator = os.path.join(current_dir, '..', 'db', 'db_turooperator.db')
 
