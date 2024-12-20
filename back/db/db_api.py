@@ -1,8 +1,11 @@
 import sqlite3
 
+current_dir = os.path.dirname(os.path.abspath(__file__))  # Получаем абсолютный путь текущего файла
+db_turooperator = os.path.join(current_dir, '..', 'db', 'db_turooperator.db')
+
 def createOperatorTransports(title, cost):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         INSERT INTO OperatorsTransports (title, cost)
@@ -17,7 +20,7 @@ def createOperatorTransports(title, cost):
 
 def listOperatorsTransport():
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM OperatorsTransports
@@ -32,7 +35,7 @@ def listOperatorsTransport():
 
 def createDirections(title, date, cost):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         INSERT INTO Directions (title, date, cost)
@@ -47,7 +50,7 @@ def createDirections(title, date, cost):
 
 def listDirections():
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM Directions
@@ -62,7 +65,7 @@ def listDirections():
 
 def create_tour(title, cost, date, available, howManyPeople):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         INSERT INTO Tours (title, cost, date, available, howManyPeople)
@@ -77,7 +80,7 @@ def create_tour(title, cost, date, available, howManyPeople):
 
 def amountPeoples(id):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
 
         cursor.execute('''
@@ -93,7 +96,7 @@ def amountPeoples(id):
 
 def costTour(id):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT title, cost FROM Tours WHERE id = ?
@@ -110,7 +113,7 @@ def costTour(id):
 
 def checkAuth(lg, password):
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM Clients WHERE login = ? AND password = ?
@@ -126,7 +129,7 @@ def checkAuth(lg, password):
 
 def getSelledTours(): #Проданные туры
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM SelledTours
@@ -141,7 +144,7 @@ def getSelledTours(): #Проданные туры
 
 def getTour(id): #Данные проданного тура
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM Tours WHERE id = ?
@@ -156,7 +159,7 @@ def getTour(id): #Данные проданного тура
 
 def getMounthFinance(month): #Отчет за месяц
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM SelledTours WHERE month = ?
@@ -171,7 +174,7 @@ def getMounthFinance(month): #Отчет за месяц
 
 def getFinanceTour(id): #подробный Финансовый отчет тура
     try:
-        connection = sqlite3.connect('db_turooperator.db')
+        connection = sqlite3.connect(db_turooperator)
         cursor = connection.cursor()
         cursor.execute('''
         SELECT * FROM SelledTours WHERE id = ?
