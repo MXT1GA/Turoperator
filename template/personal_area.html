@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+</head>
+<body>
+    <h2>Личный кабинет</h2>
+    <div>
+        <p>Фамилия: <span id="lastname-display"></span></p>
+        <p>Имя: <span id="firstname-display"></span></p>
+        <p>Отчество: <span id="middlename-display"></span></p>
+        <p>Мои туры: <span id="my-tours-display">Пока нет туров</span></p>
+    </div>
+    <div>
+        <button onclick="location.href='profile_confirmation.html'">Подтвердить профиль</button>
+        <button onclick="location.href='add_medical_docs.html'">Добавить мед. документы</button>
+         <button onclick="location.href='book_tour.html'">Записаться на тур</button>
+    </div>
+
+        <script>
+            // Получаем данные из URL параметров (если есть)
+            const urlParams = new URLSearchParams(window.location.search);
+            const lastname = urlParams.get('lastname');
+            const firstname = urlParams.get('firstname');
+            const middlename = urlParams.get('middlename');
+
+            // Обновляем поля на странице
+            document.getElementById('lastname-display').textContent = lastname || '';
+            document.getElementById('firstname-display').textContent = firstname || '';
+            document.getElementById('middlename-display').textContent = middlename || '';
+
+        </script>
+</body>
+</html>
